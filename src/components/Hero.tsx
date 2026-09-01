@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <header
       id="home"
-      className="relative min-h-[580px] sm:min-h-[640px] flex flex-col justify-between pt-3 pb-16 sm:pb-24 bg-slate-900 overflow-hidden"
+      className="relative h-screen min-h-[100dvh] flex flex-col justify-between pt-3 pb-6 sm:pb-8 bg-slate-900 overflow-hidden"
     >
       {/* Hero Background Image with Subtle Dark Gradient Overlay for Maximum Legibility */}
       <div className="absolute inset-0 z-0">
@@ -32,7 +32,7 @@ export default function Hero() {
       </div>
 
       {/* Embedded Navbar Inside Hero */}
-      <nav id="hero-navbar" className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <nav id="hero-navbar" className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full shrink-0">
         <div className="bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-md border border-white/10 px-4 sm:px-6 py-3.5 flex items-center justify-between transition-all">
           {/* Logo / Store Name */}
           <a
@@ -139,17 +139,17 @@ export default function Hero() {
         )}
       </nav>
 
-      {/* Hero Center Content: Centered Title & Two Buttons */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-auto py-12 text-center">
+      {/* Hero Center Content: Vertically Centered Title & Two Buttons */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-auto py-6 text-center flex flex-col items-center justify-center">
         <h1
           id="hero-heading"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight drop-shadow-sm"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight drop-shadow-md"
         >
           Shri Balaji Garments
         </h1>
 
         {/* Two Buttons: "Visit Store" and "WhatsApp Inquiry" */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <a
             id="hero-visit-store-btn"
             href="#contact"
@@ -173,7 +173,7 @@ export default function Hero() {
       </div>
 
       {/* Subtle bottom info bar */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center shrink-0">
         <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-300 bg-slate-900/60 backdrop-blur-xs px-4 py-1.5 rounded-full border border-white/10">
           <MapPin className="w-3.5 h-3.5 text-sky-400" />
           <span>SP Ashram Tiraha, Bahodapur, Gwalior • 10 AM – 9 PM Daily</span>
