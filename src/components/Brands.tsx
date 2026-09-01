@@ -1,49 +1,13 @@
-import { CheckCircle2, MessageCircle } from 'lucide-react';
+import { CheckCircle2, MessageCircle, ArrowRight } from 'lucide-react';
 import { STORE_INFO } from '../types';
+import { FEATURED_BRANDS } from '../data/brandsData';
 
-export default function Brands() {
-  const brandsList = [
-    {
-      name: 'Lux',
-      tag: 'Innerwear & Thermal',
-      description: 'Lux Cozi vests, briefs, thermal wear, and everyday cotton basics.',
-    },
-    {
-      name: 'Rupa',
-      tag: 'Men & Women Hojri',
-      description: 'Rupa Frontline, Jon, Softline leggings, and premium knitwear.',
-    },
-    {
-      name: 'Amul Macho',
-      tag: 'Comfort Cotton',
-      description: 'Bade Aaram Se — breathable cotton vests, briefs, and trunks.',
-    },
-    {
-      name: 'Dollar',
-      tag: 'Hojri & Casuals',
-      description: 'Dollar Bigboss innerwear, Missy casuals, and winter thermal wear.',
-    },
-    {
-      name: 'Dixcy Scott',
-      tag: 'Daily Athleisure',
-      description: 'Modern fit vests, track pants, shorts, and active casuals.',
-    },
-    {
-      name: 'VIP',
-      tag: 'Classic Essentials',
-      description: 'Trusted classic comfort innerwear, trunks, and cotton basics.',
-    },
-    {
-      name: 'Jockey',
-      tag: 'Premium Basics',
-      description: 'Super combed cotton vests, boxers, track pants, and socks.',
-    },
-    {
-      name: 'Family Cotton Mills',
-      tag: 'Daily & Nightwear',
-      description: 'High-quality cotton nighties, kids hojri sets, and seasonal wear.',
-    },
-  ];
+interface BrandsProps {
+  onViewAllBrands?: () => void;
+}
+
+export default function Brands({ onViewAllBrands }: BrandsProps) {
+  const brandsList = FEATURED_BRANDS;
 
   return (
     <section id="brands" className="py-16 md:py-24 bg-sky-50/40 border-b border-sky-100">
@@ -51,7 +15,7 @@ export default function Brands() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-600 bg-white px-3 py-1 rounded-full border border-sky-200">
-            Trusted Quality
+            Featured Brands
           </span>
           <h2
             id="brands-heading"
@@ -64,34 +28,62 @@ export default function Brands() {
           </p>
         </div>
 
-        {/* Brands Grid - Clean and simple */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Featured Brands Grid - Only Three Items */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {brandsList.map((brand, idx) => (
             <div
               key={idx}
               id={`brand-card-${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="bg-white rounded-2xl p-5 border border-sky-100 shadow-xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between"
+              className="bg-white rounded-2xl p-6 sm:p-7 border border-sky-100 shadow-xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 tracking-tight">
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <h3 className="text-xl font-bold text-slate-900 tracking-tight">
                     {brand.name}
                   </h3>
-                  <CheckCircle2 className="w-4 h-4 text-sky-600 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-sky-600 shrink-0" />
                 </div>
-                <span className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-100 mb-3">
+                <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-sky-50 text-sky-700 border border-sky-100 mb-3.5">
                   {brand.tag}
                 </span>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {brand.description}
                 </p>
+                {brand.popularItems && (
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                    {brand.popularItems.slice(0, 3).map((item, itemIdx) => (
+                      <span
+                        key={itemIdx}
+                        className="text-xs bg-slate-50 text-slate-600 px-2 py-0.5 rounded border border-slate-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
 
+        {/* View All Brands Button */}
+        <div className="mt-10 text-center">
+          <button
+            type="button"
+            id="view-all-brands-btn"
+            onClick={onViewAllBrands}
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-bold text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 rounded-xl shadow-md hover:shadow-lg transition-all"
+          >
+            <span>View All Brands</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+          <p className="text-xs text-slate-500 mt-2.5">
+            Discover our complete range of 10+ authorized brands, innerwear & hojri collections
+          </p>
+        </div>
+
         {/* Check Size/Availability Callout */}
-        <div className="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-sky-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-14 bg-white rounded-2xl p-6 sm:p-8 border border-sky-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <h4 className="text-lg sm:text-xl font-bold text-slate-900">
               Looking for a specific brand, size, or article?

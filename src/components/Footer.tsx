@@ -1,11 +1,15 @@
 import { MessageCircle, Phone, MapPin, Clock, Heart } from 'lucide-react';
 import { STORE_INFO } from '../types';
 
-export default function Footer() {
+interface FooterProps {
+  onViewAllBrands?: () => void;
+}
+
+export default function Footer({ onViewAllBrands }: FooterProps) {
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Brands We Sell', href: '#brands' },
+    { label: 'Featured Brands', href: '#brands' },
     { label: 'FAQ', href: '#faq' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -63,6 +67,18 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              {onViewAllBrands && (
+                <li>
+                  <button
+                    type="button"
+                    id="footer-view-all-brands-btn"
+                    onClick={onViewAllBrands}
+                    className="text-sm text-sky-400 hover:text-sky-300 font-medium transition-colors text-left"
+                  >
+                    View All Brands (Full Catalog) →
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 

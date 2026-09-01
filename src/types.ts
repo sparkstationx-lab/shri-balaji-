@@ -7,7 +7,10 @@ export interface FAQItem {
 export interface BrandItem {
   name: string;
   category: string;
+  tag: string;
   description: string;
+  popularItems?: string[];
+  featured?: boolean;
 }
 
 export const STORE_INFO = {
