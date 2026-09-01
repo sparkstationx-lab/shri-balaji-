@@ -1,0 +1,6 @@
+{
+  "name": "Shri Balaji Garments & Hojri",
+  "description": "A clean, modern one-page website for Shri Balaji Garments & Hojri in Gwalior offering quality everyday apparel and hojri wear.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
